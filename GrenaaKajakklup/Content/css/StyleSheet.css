@@ -1,0 +1,32 @@
+﻿body {
+}
+
+/*Master*/
+
+.MasterBox {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: right;
+}
+
+ul li a{
+    color: black;
+    font-size: 15px;
+}
+
+ul li a:hover{
+    text-decoration: underline;
+}
+
+/*Master Slut*/
+
+/*Forside*/
+
+
+
+.Billede {
+    width: 250px;
+    height: 200px;
+}
+
+/*Forside Slut*/
