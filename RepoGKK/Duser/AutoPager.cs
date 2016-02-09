@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace RepoMB
+namespace RepoGKK
 {
     public class AutoPager<T> where T : new()
     {
