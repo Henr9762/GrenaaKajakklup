@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link href="~/Content/css/app.css" rel="stylesheet" />
+    <link href="~/Content/css/foundation-flex.css" rel="stylesheet" />
+    <link href="~/Content/css/foundation.css" rel="stylesheet" />
+    <link href="~/Content/css/foundation.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSSCMS/MasterStyle.css" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+
+<body>
+    <div class="headerbackground">
+        <div class="row">
+            <div class="large-12 column align-center">
+                <h1>CMS</h1>
+            </div>
+        </div>
+        <div class="headermenubox">
+            <div class="row">
+                <div class="large-1 columns">&nbsp;</div>
+                <div class="large-11 columns">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li><a href="">CMS info</a></li>
+                        <li>
+                            <a href="#">Rediger</a>
+                            <ul class="menu">
+                                <li><a href="">Home</a></li>
+                                <li><a href="">Ro med os</a></li>
+                                <li><a href="">Tider og Priser</a></li>
+                                <li><a href="">Begivenheder</a></li>
+                                <li><a href="">Info om klub aften</a></li>
+                                <li>
+                                    <a href="#">Begivenheder</a>
+                                    <ul class="menu">
+                                        <li><a href="">Info om klub aften</a></li>
+
+                                        <li><a href="">Nye Begivenheder</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="">Galleri</a></li>
+                                <li><a href="">kalender</a></li>
+                                <li>
+                                    <a href="#">Tildmælding</a>
+                                    <ul class="menu">
+                                        <li><a href="">Vedtægter</a></li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Inputbox">
+        @RenderBody()
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <div class="large-12 column">
+                <p>Copyright © 2016 All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/js/vendor/jquery.min.js"></script>
+    <script src="~/Content/js/vendor/what-input.min.js"></script>
+    <script src="~/Content/js/foundation.min.js"></script>
+    <script src="~/Content/js/app.js"></script>
+</body>
+</html>
