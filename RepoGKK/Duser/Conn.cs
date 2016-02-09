@@ -7,7 +7,7 @@ namespace RepoMB
         
         public static SqlConnection GetCon()
         {
-            SqlConnection con = new SqlConnection("server=194.255.108.50;database=dbAutoKurt;uid=AutoKurt;pwd=eG8rYyC3;MultipleActiveResultSets=True");
+            SqlConnection con = new SqlConnection("server=194.255.108.50;database=dbGKK;uid=GKK;pwd=hest;MultipleActiveResultSets=True");
             return con;
         }
 

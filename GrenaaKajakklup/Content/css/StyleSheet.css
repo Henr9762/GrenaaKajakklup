@@ -18,11 +18,28 @@ ul li a:hover{
     text-decoration: underline;
 }
 
+.CopyrightText {
+    font-size: 12px;
+}
+
+.SlidePanelFaceBook {
+    float: right;
+}
+
+.LogIn {
+    margin-left: 1530px;
+    color: white;
+}
+
+.LogIn:hover {
+    margin-left: 1530px;
+    color: white;
+}
 /*Master Slut*/
 
+/*----------------------------------------------------------------*/
+
 /*Forside*/
-
-
 
 .Billede {
     width: 250px;
@@ -30,3 +47,51 @@ ul li a:hover{
 }
 
 /*Forside Slut*/
+
+/*----------------------------------------------------------------*/
+
+/*Tider Og Priser*/
+
+.Box1 {
+    width: 100%;
+    /*background-color: orangered;*/
+}
+
+table{
+    width: 100%;
+}
+
+.EmailLink {
+    color: blue;
+}
+
+/*Tider Og Priser Slut*/
+
+/*----------------------------------------------------------------*/
+
+/*Vinterroning*/
+
+.VinterRoningOBS {
+    color: Red;
+    margin-left: 40%;
+}
+
+.FiveMins {
+    color: red;
+    font-weight: bold;
+}
+
+.fifteenMins {
+    color: yellow;
+    font-weight: bold;
+}
+
+.fourhours {
+    color: green;
+    font-weight: bold;
+}
+
+/*Vinterroning Slut*/
+
+
+

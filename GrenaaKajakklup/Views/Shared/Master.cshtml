@@ -14,56 +14,87 @@
     <link href="~/Content/css/foundation-flex.css" rel="stylesheet" />
     <link href="~/Content/css/foundation.css" rel="stylesheet" />
     <link href="~/Content/css/foundation.min.css" rel="stylesheet" />
-    <link href="~/Content/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/css/StyleSheet.css" rel="stylesheet"/>
+
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
 
 </head>
 <body>
-    <br/>
+
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <a class="LogIn" href="#"> <i class="fa fa-cog"></i></a>
+
+<br />
     <div class="row">
         <div class="large-2 columns">&nbsp;</div>
         <div class="large-2 columns">
-            <img src="~/Content/Images/12665616_10205887218288235_1955835399_n.jpg" />
+            <img src="~/Content/Images/GKKLogo.png" />
         </div>
         <div class="large-7 columns">
-            <img src="~/Content/Images/12659624_10205887254249134_1829986529_n.jpg" />
+            <img src="~/Content/Images/textlogo3.png" />
         </div>
         <div class="large-1 columns">&nbsp;</div>
     </div>
 
 
+
     <div class="row">
-        <div class="large-4 columns">&nbsp;</div>
-        <div class="large-8 columns">
+        <div class="large-3 columns">
+            <div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button_count" data-show-faces="true"></div>
+        </div>
+        <div class="large-9 columns">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li><a href="#">Forside</a></li>
+                <li><a href="/Home/Index">Forside</a></li>
                 <li>
-                    <a href="#">Ro med Os</a>
+                    <a href="/Home/RoMedOs">Ro med Os</a>
                     <ul class="menu">
-                        <li><a href="">Vinterning</a></li>
+                        <li><a href="/Home/VinterRoning">Vinter Roning</a></li>
                     </ul>
                 </li>
-
-                <li><a href="#">Tider og Priser</a></li>
-                <li><a href="#">Engagement</a></li>
-                <li><a href="#">Kalender</a></li>
-                <li><a href="#">Tildmælding</a></li>
+                <li><a href="/Home/TiderOgPriser">Tider og Priser</a></li>
+                <li>
+                    <a href="/Home/Begivenheder">Beginvenheder</a>
+                    <ul class="menu">
+                        <li><a href="/Home/KlubAften">Info om Klub Aften</a></li>
+                        <li><a href="/Home/NyeBegivenheder">Nye Beginvenheder</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Home/Galleri">Galleri</a></li>
+                <li><a href="/Home/Kalender">Kalender</a></li>
+                <li>
+                    <a href="/Home/Tilmelding">Tilmelding</a>
+                    <ul class="menu">
+                        <li><a href="/Home/Vedtægter">Vedtægter</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
-    </div>
-    <div class="row">
-        @*Slider*@
     </div>
 
     @RenderBody()
 
-    <br/>
-<div class="row">
-    <div class="large-12 columns">
-        <p>Copyright © Henrik Pedersen & Filp Storm Sørensen</p>
-    </div>
-</div>
+    <br />
+    <div class="row">
+        <div class="large-12 columns">
+            <p class="text-center CopyrightText">
+                <i>Copyright © Henrik Pedersen & Filp Storm Sørensen | All Rights Reserved</i>
+</p>
+           
 
-<script src="~/Content/js/vendor/jquery.min.js"></script>
+        </div>
+    </div>
+
+    <script src="~/Content/js/vendor/jquery.min.js"></script>
     <script src="~/Content/js/vendor/what-input.min.js"></script>
     <script src="~/Content/js/foundation.min.js"></script>
     <script src="~/Content/js/app.js"></script>

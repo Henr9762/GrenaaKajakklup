@@ -90,21 +90,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\app.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\foundation-flex.css" />
     <Content Include="Content\css\foundation.css" />
     <Content Include="Content\css\foundation.min.css" />
     <Content Include="Content\css\StyleSheet.css" />
-    <Content Include="Content\Images\12659624_10205887254249134_1829986529_n.jpg" />
-    <Content Include="Content\Images\12665616_10205887218288235_1955835399_n.jpg" />
-    <Content Include="Content\Images\12666402_10205887244888900_1878323681_n.jpg" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\Bestryelseformand.jpg" />
     <Content Include="Content\Images\Bestyrelsemedlem1.jpg" />
     <Content Include="Content\Images\Bestyrelsemedlem2.jpg" />
     <Content Include="Content\Images\Bestyrelsemedlem3.jpg" />
+    <Content Include="Content\Images\GKKLogo.png" />
     <Content Include="Content\Images\GKKSliderImg1.jpg" />
     <Content Include="Content\Images\GKKSliderImg2.jpg" />
     <Content Include="Content\Images\GKKSliderImg3.jpg" />
     <Content Include="Content\Images\Kassere.jpg" />
+    <Content Include="Content\Images\logo2.png" />
+    <Content Include="Content\Images\textlogo3.png" />
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\foundation.js" />
     <Content Include="Content\js\foundation.min.js" />
@@ -132,6 +135,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Views\Home\VinterRoning.cshtml" />
+    <Content Include="Views\Home\TiderOgPriser.cshtml" />
+    <Content Include="Views\Home\Vedtægter.cshtml" />
+    <Content Include="Views\Home\RoMedOs.cshtml" />
+    <Content Include="Views\Home\Begivenheder.cshtml" />
+    <Content Include="Views\Home\KlubAften.cshtml" />
+    <Content Include="Views\Home\NyeBegivenheder.cshtml" />
+    <Content Include="Views\Home\Galleri.cshtml" />
+    <Content Include="Views\Home\Kalender.cshtml" />
+    <Content Include="Views\Home\Tilmelding.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
