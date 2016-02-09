@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 
 
-namespace RepoMB
+namespace RepoGKK
 {
    public class Mapper<T> where T : new()
     {

@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 
 
-namespace RepoMB
+namespace RepoGKK
 {
     public class AutoFac<T> where T : new()
     {

@@ -89,6 +89,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\GrenaaKajakklup.dll" />
+    <Content Include="bin\GrenaaKajakklup.pdb" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\RepoGKK.dll" />
+    <Content Include="bin\RepoGKK.pdb" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
+    <Content Include="bin\System.Web.Webpages.Deployment.xml" />
+    <Content Include="bin\System.Web.Webpages.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.xml" />
     <Content Include="Content\css\app.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
@@ -115,6 +143,9 @@
     <Content Include="Content\js\vendor\what-input.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="obj\Debug\GrenaaKajakklup.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\GrenaaKajakklup.dll" />
+    <Content Include="obj\Debug\GrenaaKajakklup.pdb" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\Master.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -122,10 +153,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +184,15 @@
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Shared\MasterCms.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UserLogin.cshtml" />
+    <Content Include="bin\GrenaaKajakklup.dll.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\GrenaaKajakklup.csprojResolveAssemblyReference.cache" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -158,10 +202,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\CSSCMS\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepoGKK\RepoGKK.csproj">

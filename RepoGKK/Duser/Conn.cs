@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace RepoMB
+namespace RepoGKK
 {
     public static class Conn
     {
