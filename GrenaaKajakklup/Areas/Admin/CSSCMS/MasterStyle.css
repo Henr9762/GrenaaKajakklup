@@ -1,33 +1,38 @@
 ﻿body {
 }
-.headerbackground {
-    text-align: center;
-    background-color: darkgray;
-  
-}
+
 .headermenubox {
-    background-color: gray;
-     border-top: black solid 2px;
-      border-right: black solid 2px;
-       border-left: black solid 2px;
-         border-bottom: black solid 2px;
-    
+    background-color: khaki;
+    height: 37px;
+    border-bottom: 1px solid lightgray;
 }
+
+.CmsMenu {
+    padding-left: 8%;
+}
+
 ul li a{
     color: black;
-    font-size: 25px;
+    font-size: 15px;
 }
 
 ul li a:hover{
     text-decoration: underline;
 }
+
 footer {
-    background-color: darkgray;
+    font-style: italic;
     text-align: center;
-    border-top: black solid 2px;
-    margin-top: 688px;
+    font-size: 12px;
 }
-.Inputbox {
-    text-align: center;
+
+.LoginField {
+    padding-top: 200px;
 }
+
+
+
+
+
+
 

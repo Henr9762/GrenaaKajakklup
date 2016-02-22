@@ -186,7 +186,6 @@
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\UserLogin.cshtml" />
     <Content Include="bin\GrenaaKajakklup.dll.config" />
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
@@ -194,6 +193,7 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\GrenaaKajakklup.csprojResolveAssemblyReference.cache" />
     <Content Include="Areas\Admin\Views\Shared\MasterCms.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UserLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

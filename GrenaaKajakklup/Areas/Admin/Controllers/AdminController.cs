@@ -17,11 +17,12 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Login(String Name, String Password)
+        public ActionResult UserLogin(String Name, String Password)
         {
            Gkkbruger Bruger = new Gkkbruger();
-            BrugerFac BF = new BrugerFac();
+           BrugerFac BF = new BrugerFac();
 
             Bruger= BF.Login(Name, Password);
            // Bruger = BF.Login(Name, FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "sha1"));
@@ -34,7 +35,7 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             }
             else
             {
-                 ViewBag.MSG = "brugern blev ikke fundet!";
+                 ViewBag.MSG = "Brugernavn eller Password er forkert!";
 
             }
             
