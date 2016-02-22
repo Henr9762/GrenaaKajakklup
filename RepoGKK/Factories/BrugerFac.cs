@@ -9,11 +9,13 @@ using RepoGKK.Models.BaseModels;
 
 namespace RepoGKK.Factories
 {
-    public class BrugerFac:AutoFac<Gkkbruger>
+    public class BrugerFac : AutoFac<Gkkbruger>
     {
         public Gkkbruger Login(string Name, string Password)
         {
-            using (var CMD = new SqlCommand("SELECT * FROM Gkkbruger WHERE Name=@Name AND Password=@Password", Conn.CreateConnection()))
+            using (
+                var CMD = new SqlCommand("SELECT * FROM Gkkbruger WHERE Name=@Name AND Password=@Password",
+                    Conn.CreateConnection()))
             {
                 CMD.Parameters.AddWithValue("@Name", Name);
                 CMD.Parameters.AddWithValue("@Password", Password);
@@ -35,7 +37,9 @@ namespace RepoGKK.Factories
             }
         }
     }
-
-
 }
+
+
+
+
 

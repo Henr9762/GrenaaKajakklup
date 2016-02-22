@@ -194,6 +194,9 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\GrenaaKajakklup.csprojResolveAssemblyReference.cache" />
     <Content Include="Areas\Admin\Views\Shared\MasterCms.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\OpretBruger.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Brugerliste.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ForsideRediger.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
