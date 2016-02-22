@@ -1,8 +1,8 @@
-﻿
+﻿@model RepoGKK.Models.BaseModels.GkkRediger
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
 }
 
 <h2>Index</h2>
-
+@Html.Raw(@Model.Tekst)

@@ -1,0 +1,22 @@
+﻿@using RepoGKK.Models.BaseModels
+@model List<RepoGKK.Models.BaseModels.Gkkbruger>
+@{
+    ViewBag.Title = "Brugerliste";
+    Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
+}
+
+<h2>Brugerliste</h2>
+<p>Tryk på navnet for at slette bruger</p>
+@foreach (Gkkbruger Users in Model)
+{
+   
+    <a href="/Admin/Admin/SletBruger/@Users.ID/">
+        @Users.Name
+
+    </a>
+    <br/>
+    
+
+
+}
+
