@@ -15,17 +15,17 @@
                     <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
                     <li class="is-active orbit-slide">
                         <div>
-                            <img src="~/Content/Images/GKKSliderImg1.jpg" />
+                            <img src="~/Areas/Admin/Pic/@ViewBag.Slider_Billede1" />
                         </div>
                     </li>
                     <li class="orbit-slide">
                         <div>
-                            <img src="~/Content/Images/GKKSliderImg2.jpg" />
+                            <img src="~/Areas/Admin/Pic/@ViewBag.Slider_Billede2" />
                         </div>
                     </li>
                     <li class="orbit-slide">
                         <div>
-                            <img src="~/Content/Images/GKKSliderImg3.jpg" />
+                            <img src="~/Areas/Admin/Pic/@ViewBag.Slider_Billede3" />
                         </div>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
 </div>
 <div class="row">
     @Html.Raw(Model.Tekst)
-</div>
+    </div>
 
 
 
@@ -67,7 +67,7 @@
                 <br />
                 <i>@medlem.Title</i>
                 <p>@medlem.Navn</p>
-            </div>
+    </div>
         }
     }
 </div>

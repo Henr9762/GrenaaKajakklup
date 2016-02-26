@@ -1,8 +1,10 @@
-﻿
+﻿@model RepoGKK.Models.BaseModels.GkkRediger
 @{
     ViewBag.Title = "Begivenheder";
     Layout = "~/Views/Shared/Master.cshtml";
 }
 
 <h2>Begivenheder</h2>
-
+<div class="large-12 columns">
+    @Html.Raw(Model.Tekst)
+</div>
