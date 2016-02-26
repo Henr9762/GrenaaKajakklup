@@ -1,4 +1,4 @@
-﻿
+﻿@model RepoGKK.Models.BaseModels.GkkRediger
 @{
     ViewBag.Title = "VinterRoning";
     Layout = "~/Views/Shared/Master.cshtml";
@@ -14,6 +14,11 @@
 
 <div class="row">
     <div class="large-6 columns">
+        
+        <div class="large-12 columns">
+            @Html.Raw(Model.Tekst)
+        </div>
+
         <p>
             <b>Tips og tricks til dem som vil ro hele året</b>
         </p>
