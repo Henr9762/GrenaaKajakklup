@@ -13,6 +13,7 @@ using RepoGKK.Models.BaseModels;
 namespace GrenaaKajakklup.Areas.Admin.Controllers
 {
 
+
     public class AdminController : Controller
     {
         private Uploader u = new Uploader();
