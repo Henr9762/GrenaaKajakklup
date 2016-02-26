@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RepoGKK.Factories;
+using RepoGKK.Models.BaseModels;
 
 namespace GrenaaKajakklup.Controllers
 {
@@ -11,9 +13,17 @@ namespace GrenaaKajakklup.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            GkkRedigerFac test = new GkkRedigerFac();
+
+            GkkBestyrelsenFac bestyrelsenFac = new GkkBestyrelsenFac();
+
+            List<GkkBestyrelsen> bestyrelsesMedlemmer = bestyrelsenFac.GetAll();
+            ViewBag.BestyrelsesMedlemmer = bestyrelsesMedlemmer;
+
+            return View(test.Get(1));
         }
 
+        
         public ActionResult RoMedOs()
         {
             return View();
@@ -31,7 +41,9 @@ namespace GrenaaKajakklup.Controllers
 
         public ActionResult Vedtægter()
         {
-            return View();
+            GkkRedigerFac redigerFacVedtægter = new GkkRedigerFac();
+
+            return View(redigerFacVedtægter.Get(3));
         }
 
         public ActionResult Begivenheder()
@@ -49,10 +61,20 @@ namespace GrenaaKajakklup.Controllers
             return View();
         }
 
+
+        //--------------------------------Galleri Start--------------------------------//
         public ActionResult Galleri()
         {
+            GkkGalleriFac galleriFac = new GkkGalleriFac();
+
+            List<GkkGalleri> GalleriSamling = galleriFac.GetAll();
+            GalleriSamling.Sort((s1, s2) => s2.ID.CompareTo(s1.ID));
+
+            ViewBag.GalleriSamling = GalleriSamling;
+
             return View();
         }
+        //--------------------------------Galleri Slut--------------------------------//
 
         public ActionResult Kalender()
         {

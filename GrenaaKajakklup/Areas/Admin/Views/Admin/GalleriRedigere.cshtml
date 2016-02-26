@@ -1,0 +1,59 @@
+﻿@using RepoGKK.Models.BaseModels
+
+@{
+    ViewBag.Title = "GalleriRedigere";
+    Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
+}
+
+<br/>
+<div class="row">
+    <div class="large-4 columns">
+        <div class="UploadBilledeCenterposition">
+            <form name="Myform" action="/Admin/Admin/GalleriRedigere" enctype="multipart/form-data" method="POST">
+                <input id="File1" type="file" name="file" />
+                <br />
+                <input class="KnapStyle" id="Submit1" type="submit" value="Upload" />
+            </form>
+        </div>
+    </div>
+    <div class="large-8 columns">
+        <p>
+            <b>Læs før du uploader dine billeder.</b>
+        </p>
+        <p>
+            Velkommen til din Galleri billede uploader.
+            Før du begynder skal du sikre dig dine billeder altid har den samme størelse, inden du uploader.
+        </p>
+        <p>
+            Hvis du spørg hvorfor?
+        </p>
+        <p>Fordi det får dit Galleri til at se pænt ud og det kan vi alle lide</p>
+    </div>
+</div>
+
+<br/><hr /><br />
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="GalleriBilledeCMS">
+            @if (ViewBag.GalleriSamling != null)
+            {
+                foreach (GkkGalleri BilledeID in (ViewBag.GalleriSamling as List<GkkGalleri>))
+                {
+
+                    <div class="GalleriBilledeCMS">
+                        <a href="/Admin/Admin/DeleteGalleriBillede/@BilledeID.ID" onclick="return confirm('Du er ved at slette Billedet. For at forsætte, tryk OK')"> <img src="~/Content/Images/@BilledeID.BilledeLille"> </a>
+                        <br />
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<br /><hr /><br />
+
+
+
+
+

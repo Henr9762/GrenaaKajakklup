@@ -1,12 +1,35 @@
-﻿
+﻿@using RepoGKK.Models.BaseModels
+
 @{
     ViewBag.Title = "Galleri";
     Layout = "~/Views/Shared/Master.cshtml";
 }
 
+<br/>
 <div class="row">
-    <div class="large-12 columns">
-        <h2>Galleri</h2>
+    <div class="large-12 columns text-center">
+        <h3>Galleri</h3>
+        <hr/>
     </div>
 </div>
+
+<div class="row">
+    <div class="large-12 columns">
+        @if (ViewBag.GalleriSamling != null)
+        {
+            foreach (GkkGalleri BilledeID in (ViewBag.GalleriSamling as List<GkkGalleri>))
+            {
+
+                <div class="GalleriBilleder">
+                    <a href="~/Content/Images/@BilledeID.BilledeStor"><img src="~/Content/Images/@BilledeID.BilledeLille"></a>
+                    <br />
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+    
+
 

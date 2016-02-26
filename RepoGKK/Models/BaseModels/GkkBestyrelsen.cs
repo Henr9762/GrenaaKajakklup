@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace RepoGKK.Models.BaseModels
 {
-   public class GkkRediger
+    public class GkkBestyrelsen
     {
-
         public int ID { get; set; }
 
         [Required]
-        public string Overskrift { get; set; }
+        public string Billede { get; set; }
 
         [Required]
-        public string Tekst { get; set; }
+        public string Title { get; set; }
+
+        [Required]
+        public string Navn { get; set; }
     }
 }

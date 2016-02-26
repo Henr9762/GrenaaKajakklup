@@ -1,4 +1,6 @@
-﻿
+﻿@using RepoGKK.Models.BaseModels;
+@model GkkRediger
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Master.cshtml";
@@ -37,41 +39,16 @@
 
 <div class="row">
     <div class="large-12 columns">
-        <h3>Hvem er Vi? </h3>
+        <h3>@Html.Raw(Model.Overskrift)</h3>
     </div>
 </div>
 <div class="row">
-    <div class="large-6 columns">
-        <p>
-            Vi er en lille gruppe kajakentusiaster, som gerne vil ud at ro. Det eneste vi forventer fra vores medlemmer er, at de udviser
-            ansvarlighed over for deres egen og andres sikkerhed, og den natur vi færdes i.
-        </p>
-        <p>
-            Vi er omkring 35 medlemmer, nogle mere aktive end andre, som kan lide at ro
-            forskellige former for kajak. Nogle er til Havkajak andre til turkajak andre til whitewater kajak. Nogle er til leg, nogle til langtur og nogle til hygge.
-            Vores alder er imellem 20 og 70 år så mon ikke der er en romakker til dig.
-        </p>
-        <p>
-            Vi regner med at vi er voksne mennesker som kan tage ansvar for sig selv så vi har ikke det helt store regelsæt.
-        </p>
-    </div>
-    <div class="large-6 columns">
-        <p>
-            Vi har valgt at genindføre en frironingsprøve, fordi vi synes at vi har et medansvar for at vores medlemmer kan redde sig selv eller en makker hvis uheldet
-            skulle være ude, og så vi ved at grundteknikkerne er i orden.
-        </p>
-        <p>
-            Færdigheder til denne prøve kan med fordel øves under trygge forhold i svømmehallen hver fredag
-            om efteråret og vinteren og til klubaftener når vandet er varmere.
-        </p>
-        <p>
-            Vi organiserer nogle klubture hvor vi alle kan være med, for at styrke samholdet, samt nogle ture på
-            forskellige niveauer for lidt mere udfordring. Ud over dette er der de ture som medlemmerne selv organiserer.
-        </p>
-    </div>
+    @Html.Raw(Model.Tekst)
 </div>
 
-<br /><hr /><br />
+
+
+<hr /><br />
 
 <div class="row">
     <div class="large-12 columns">
@@ -81,51 +58,19 @@
 </div>
 
 <div class="row">
-    <div class="large-3 columns">
-        <div class="Billede">
-            <img src="~/Content/Images/Bestryelseformand.jpg" /></div>
-        <p><i>Bestyrelseformand</i><br />Michael
-        </p>
-    </div>
-    <div class="large-3 columns">
-        <div class="Billede">
-            <img src="~/Content/Images/Kassere.jpg" /></div>
-        <p><i>Kasser</i><br/>Lisbeth
-        </p>
-    </div>
-    <div class="large-3 columns">
-        <div class="Billede">
-            <img src="~/Content/Images/Bestyrelsemedlem1.jpg" /></div>
-        <p><i>Bestyrelsemedlem</i><br />Helga
-        </p>
-    </div>
-    <div class="large-3 columns">
-        <div class="Billede">
-            <img src="~/Content/Images/Bestyrelsemedlem2.jpg" /></div>
-        <p><i>Bestyrelsemedlem</i><br />Marc
-        </p>
-    </div>
+    @if (ViewBag.BestyrelsesMedlemmer != null)
+    {
+        foreach (GkkBestyrelsen medlem in (ViewBag.BestyrelsesMedlemmer as List<GkkBestyrelsen>))
+        {
+            <div class="MedlemViwe">
+                <img src="~/Content/Images/@medlem.Billede">
+                <br />
+                <i>@medlem.Title</i>
+                <p>@medlem.Navn</p>
+            </div>
+        }
+    }
 </div>
 
-<br/>
 
-<div class="row">
-    <div class="large-3 columns">
-        <div class="Billede">
-            <img src="~/Content/Images/Bestyrelsemedlem3.jpg" /></div>
-        <p><i>Bestyrelsemedlem</i><br />Jørn</p>
-    </div>
-    <div class="large-3 columns">
-        <div class="Billede"></div>
-        @*<p>Navn<br />Bestyrelsemedlem</p>*@
-    </div>
-    <div class="large-3 columns">
-        <div class="Billede"></div>
-        @*<p>Navn<br />Bestyrelsemedlem</p>*@
-    </div>
-    <div class="large-3 columns">
-        <div class="Billede"></div>
-        @*<p>Navn<br />Bestyrelsemedlem</p>*@
-    </div>
-</div>
 

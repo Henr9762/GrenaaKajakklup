@@ -55,6 +55,22 @@ ul li a:hover{
     height: 200px;
 }
 
+table tr {
+    border: 1px solid white;
+}
+
+table tr td {
+
+    padding-right: 30px;
+}
+
+.MedlemViwe {
+    float: left;
+    width: 240px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
 /*Forside Slut*/
 
 /*----------------------------------------------------------------*/
@@ -102,5 +118,16 @@ table{
 
 /*Vinterroning Slut*/
 
+/*----------------------------------------------------------------*/
 
+/*Galleri Start*/
 
+.GalleriBilleder {
+    padding: 5px;
+    float: left;
+    min-height: 160px;
+}
+
+/*Galleri Slut*/
+
+/*----------------------------------------------------------------*/

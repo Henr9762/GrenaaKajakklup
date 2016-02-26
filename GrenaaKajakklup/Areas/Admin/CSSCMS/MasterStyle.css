@@ -30,6 +30,32 @@ footer {
     padding-top: 200px;
 }
 
+.KnapStyle {
+    width: 100px;
+    height: 40px;
+}
+
+.RedigereForsideInput {
+    width: 25%;
+}
+
+.AdminMedlemViwe {
+    float: left;
+    width: 240px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.GalleriBilledeCMS {
+    padding: 5px;
+    float: left;
+    min-height: 160px;
+}
+
+.UploadBilledeCenterposition {
+    margin-left: 20%;
+    margin-top: 10%;
+}
 
 
 
