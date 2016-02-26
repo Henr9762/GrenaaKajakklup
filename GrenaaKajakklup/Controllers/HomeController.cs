@@ -24,8 +24,7 @@ namespace GrenaaKajakklup.Controllers
             GkkSlidder slider_billede3 = sliderFac.Get(3);
             ViewBag.Slider_Billede3 = slider_billede3.Billedenavn;
 
-
-            return View();
+            
             GkkRedigerFac test = new GkkRedigerFac();
 
             GkkBestyrelsenFac bestyrelsenFac = new GkkBestyrelsenFac();
