@@ -1,0 +1,49 @@
+﻿@using RepoGKK.Models.BaseModels
+@model RepoGKK.Models.BaseModels.GkkRediger
+
+@{
+    ViewBag.Title = "VedtægterRedigere";
+    Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
+}
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea',
+        height: 600,
+        theme: 'modern',
+        forced_root_block_attrs: { "style": "margin: 5px 0" },
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+        ],
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ],
+        content_css: [
+            '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+            '//www.tinymce.com/css/codepen.min.css'
+        ]
+    });
+</script>
+
+<div class="row">
+    <div class="large-12 columns">
+        <form name="Myform" action="/Admin/Admin/VedtægterRedigere" enctype="multipart/form-data" method="POST">
+            <br/>
+            <h4>Redigere text i Vedtægterne</h4>
+            <br/>
+            <input class="RedigereForsideInput" id="Text1" type="text" name="Overskrift" value="@Model.Overskrift"/>
+            <textarea name="Tekst">@Model.Tekst</textarea>
+            <input id="Hidden1" type="hidden" name="ID" value="@Model.ID"/>
+            <br/>
+            <input class="KnapStyle" id="Submit1" type="submit" value="Gem" />
+        </form>
+    </div>
+</div>

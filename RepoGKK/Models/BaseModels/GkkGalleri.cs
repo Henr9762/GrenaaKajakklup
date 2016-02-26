@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace RepoGKK.Models.BaseModels
 {
-   public class GkkRediger
+    public class GkkGalleri
     {
-
         public int ID { get; set; }
 
         [Required]
-        public string Overskrift { get; set; }
+        public string BilledeStor { get; set; }
 
         [Required]
-        public string Tekst { get; set; }
+        public string BilledeLille { get; set; }
     }
 }
