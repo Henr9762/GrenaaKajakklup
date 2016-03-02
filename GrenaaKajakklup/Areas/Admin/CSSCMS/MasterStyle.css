@@ -8,7 +8,7 @@
 }
 
 .CmsMenu {
-    padding-left: 8%;
+    padding-left: 6%;
 }
 
 ul li a{
@@ -55,6 +55,14 @@ footer {
 .UploadBilledeCenterposition {
     margin-left: 20%;
     margin-top: 10%;
+}
+
+table {
+    width: 100%;
+}
+
+.BrugerTabel {
+    width: 33%;
 }
 
 

@@ -3,20 +3,49 @@
 @{
     ViewBag.Title = "Brugerliste";
     Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
+    int BrugerID = int.Parse(Session["UserLogin"].ToString());
 }
 
-<h2>Brugerliste</h2>
-<p>Tryk på navnet for at slette bruger</p>
-@foreach (Gkkbruger Users in Model)
-{
-   
-    <a href="/Admin/Admin/SletBruger/@Users.ID/">
-        @Users.Name
+<br />
+<div class="row">
+    <div class="large-1 columns">&nbsp;</div>
+    <div class="large-4 columns">
+        <h5 class="text-center">Opret Brugere</h5>
+        <form action="/Admin/Admin/OpretBruger/" enctype="mutipart/form-data" method="POST">
 
-    </a>
-    <br/>
-    
+            <input type="text" name="Name" placeholder="Navn" />
+            <input id="Password1" type="password" name="Password" placeholder="Password" />
+            <br />
+            <input class="KnapStyle" type="submit" name="bruger" value="Opret"/>
+            <br/><br/>
+            @ViewBag.MSG
+
+        </form>
+    </div>
+    <div class="large-2 columns">&nbsp;</div>
+    <div class="large-4 columns">
+        <h5 class="text-center">Oprettet Brugere</h5>
+        @foreach (Gkkbruger Users in Model)
+        {
+            <table>
+                <tr>
+                    <td class="BrugerTabel">
+                        @Users.Name
+                    </td>
+                    <td class="BrugerTabel text-right">
+                        @if (BrugerID != Users.ID)
+                        {
+                            <a href="/Admin/Admin/SletBruger/@Users.ID" onclick="return confirm('Er du sikker på du vil slætte brugeren @Users.Name???')"> Slet Bruger </a>
+                        }
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div class="large-1 columns">&nbsp;</div>
+</div>
+<br />
 
 
-}
+
 

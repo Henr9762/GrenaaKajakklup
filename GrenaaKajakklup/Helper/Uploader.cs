@@ -104,9 +104,9 @@ using System.Web;
 
                 else
                 {
-                    return outputPath + strFileName;
+                    return strFileName;
                 }
-                return outputPath + strFileName;
+                return strFileName;
             }
             else
             {

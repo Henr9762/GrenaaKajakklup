@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.UI.WebControls;
 using RepoGKK.Factories;
 using RepoGKK.Models.BaseModels;
 
 
 namespace GrenaaKajakklup.Areas.Admin.Controllers
 {
-
-
     public class AdminController : Controller
     {
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            if (Session["UserLogin"] == null && Request.RawUrl != "/Admin/Admin/UserLogin")
+            {
+                Response.Redirect("/Home/Index");
+                return;
+            }
+            base.OnActionExecuted(filterContext);
+        }
+
         private Uploader u = new Uploader();
         private GkkSlidderFac Slider = new GkkSlidderFac();
+
         // GET: Admin/Admin
         //--------------------------------Index start--------------------------------//
 
@@ -38,19 +46,17 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             Gkkbruger Bruger = new Gkkbruger();
             BrugerFac BF = new BrugerFac();
 
-
-            Bruger = BF.Login(Name, Password);
-            // Bruger = BF.Login(Name, FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "sha1"));
+            Bruger = BF.Login(Name, Crypto.Hash(Password));
 
             if (Bruger.ID > 0)
             {
-                Session["userid"] = Bruger.ID;
+                Session["UserLogin"] = Bruger.ID;
                 Session.Timeout = 120;
                 return View("Index", Redigerside.Get(1));
             }
             else
             {
-                ViewBag.MSG = "brugern blev ikke fundet!";
+                ViewBag.MSG = " Brugern blev ikke fundet!";
             }
 
             return View("UserLogin");
@@ -65,10 +71,10 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
 
         //--------------------------------Bruger start--------------------------------//
 
-        public ActionResult OpretBruger()
-        {
-            return View();
-        }
+        //public ActionResult OpretBruger()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult OpretBruger(String Name, String Password)
@@ -78,39 +84,53 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
 
             if (Kf.UserExists(Name) != true)
             {
-                if (Name != null || Password != null)
+                if (Name.Length != 0 && Password.Length != 0)
                 {
                     K.Name = Name;
-                    K.Password = Password;
+                    K.Password = Crypto.Hash(Password);
                     Kf.Insert(K);
-                    ViewBag.MSG = "brugern er blevet  oprettet";
+                    ViewBag.MSG = " Brugern er blevet  oprettet";
                 }
                 else
                 {
-                    ViewBag.MSG = "felterne skal udfyldes";
+                    ViewBag.MSG = " Felterne skal udfyldes";
                 }
             }
             else
             {
-                ViewBag.MSG = "Fejl brugeren eksiterer allerede";
+                ViewBag.MSG = " Fejl brugeren eksiterer allerede";
             }
 
-            return View("OpretBruger");
+            return View("Brugerliste", Kf.GetAll());
         }
 
         public ActionResult SletBruger(int id)
         {
+            int BrugerID = int.Parse(Session["UserLogin"].ToString());
 
             OpretFac Kf = new OpretFac();
-            Gkkbruger K = new Gkkbruger();
+            if (BrugerID == id)
+            {
 
-            Kf.Delete(id);
-
+            }
+            else
+            {
+                if (id != 49)
+                {
+                    Kf.Delete(id);
+                }
+                else
+                {
+                    ViewBag.MSG = "Denne Bruger kan ikke slættes af sikkerheds mæssige grunde";
+                }
+            }
+            
             return View("Brugerliste", Kf.GetAll());
         }
 
         public ActionResult Brugerliste()
         {
+
             BrugerFac BF = new BrugerFac();
 
             return View(BF.GetAll());
@@ -149,7 +169,8 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
 
             if (file.ContentLength > 0 && file != null)
             {
-                RedigereBestyrelsen.Billede = uploader.UploadImage(file, @"Content\Images\", 250, true);
+                string appPath = Request.PhysicalApplicationPath;
+                RedigereBestyrelsen.Billede = uploader.UploadImage(file, appPath + @"Content\Images\", 250, true);
             }
 
             GkkBestyrelsenFac bestyrelsenFac = new GkkBestyrelsenFac();
@@ -206,24 +227,40 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult GalleriRedigere(HttpPostedFileBase file)
+        public ActionResult GalleriRedigere(List<HttpPostedFileBase> file)
         {
             Uploader uploader = new Uploader();
             GkkGalleri RedigereGalleri = new GkkGalleri();
             GkkGalleriFac RedigereGalleriFac = new GkkGalleriFac();
 
-            if (file.ContentLength > 0 && file != null)
+            foreach (HttpPostedFileBase fil in file)
             {
-                RedigereGalleri.BilledeStor = uploader.UploadImage(file, @"Content\Images\", 0, true);
-                RedigereGalleri.BilledeLille = uploader.UploadImage(file, @"Content\Images\", 200, true);
+                if (fil.ContentLength > 0 && file != null)
+                {
+                    string appPath = Request.PhysicalApplicationPath;
+                    RedigereGalleri.BilledeStor = uploader.UploadImage(fil, appPath + @"Content\Images\", 0, true);
+                    RedigereGalleri.BilledeLille = uploader.UploadImage(fil, appPath + @"Content\Images\", 200, true);
 
-                RedigereGalleriFac.Insert(RedigereGalleri);
+                    RedigereGalleriFac.Insert(RedigereGalleri);
+                }
             }
 
             return RedirectToAction("GalleriRedigere");
         }
 
-        //TJEK
+        public ActionResult DeleteGalleriBillede(int id)
+        {
+            GkkGalleriFac galleriFac = new GkkGalleriFac();
+
+            galleriFac.Delete(id);
+
+            return RedirectToAction("GalleriRedigere");
+        }
+
+        //--------------------------------Galleri slut--------------------------------//
+
+        //--------------------------------Slider start--------------------------------//
+
         [OutputCache(NoStore = true, Duration = 0)]
         [HttpPost]
         public ActionResult Slider_Billede1(HttpPostedFileBase file)
@@ -278,15 +315,15 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             return RedirectToAction("ForsideRediger");
         }
 
+        //--------------------------------Slider slut--------------------------------//
 
+        //--------------------------------Ro med OS start--------------------------------//
 
         public ActionResult ROmedOSRediger()
         {
             GkkSlidderFac Redigerslidder = new GkkSlidderFac();
             GkkRedigerFac RedigerSide = new GkkRedigerFac();
             return View(RedigerSide.Get(5));
-
-
         }
 
         [ValidateInput(false)]
@@ -299,17 +336,10 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             return View(RedigerSide.Get(5));
         }
 
-
-
-
-
         public ActionResult VinterRoningRediger()
         {
-
             GkkRedigerFac RedigerSide = new GkkRedigerFac();
             return View(RedigerSide.Get(6));
-
-
         }
 
         [ValidateInput(false)]
@@ -322,70 +352,14 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             return View(RedigerSide.Get(6));
         }
 
-        public ActionResult TiderogPriserRediger()
-        {
+        //--------------------------------Ro med OS slut--------------------------------//
 
-            GkkRedigerFac RedigerSide = new GkkRedigerFac();
-            return View(RedigerSide.Get(7));
-
-
-        }
-
-        [ValidateInput(false)]
-        [HttpPost]
-        public ActionResult TiderogPriserRediger(GkkRediger RedigerForside)
-        {
-            RedigerForside.Overskrift = " ";
-            GkkRedigerFac RedigerSide = new GkkRedigerFac();
-            RedigerSide.Update(RedigerForside);
-            return View(RedigerSide.Get(7));
-        }
-
-        public ActionResult BegivenhederRediger()
-        {
-
-            GkkRedigerFac RedigerSide = new GkkRedigerFac();
-            return View(RedigerSide.Get(9));
-
-
-        }
-
-        [ValidateInput(false)]
-        [HttpPost]
-        public ActionResult BegivenhederRediger(GkkRediger RedigerForside)
-        {
-            RedigerForside.Overskrift = " ";
-            GkkRedigerFac RedigerSide = new GkkRedigerFac();
-            RedigerSide.Update(RedigerForside);
-            return View(RedigerSide.Get(9));
-        }
-
-        public ActionResult KlubaftenRediger()
-        {
-
-            GkkRedigerFac RedigerSide = new GkkRedigerFac();
-            return View(RedigerSide.Get(8));
-
-
-        }
-
-        [ValidateInput(false)]
-        [HttpPost]
-        public ActionResult KlubAftenRediger(GkkRediger RedigerForside)
-        {
-            RedigerForside.Overskrift = " ";
-            GkkRedigerFac RedigerSide = new GkkRedigerFac();
-            RedigerSide.Update(RedigerForside);
-            return View(RedigerSide.Get(8));
-        }
+        //--------------------------------NyeBegivenheder start--------------------------------//
 
         public ActionResult NyeBegivenhederRediger()
         {
-
             GkkRedigerFac RedigerSide = new GkkRedigerFac();
             return View(RedigerSide.Get(10));
-
-
         }
 
         [ValidateInput(false)]
@@ -398,16 +372,78 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             return View(RedigerSide.Get(10));
         }
 
-        public ActionResult DeleteGalleriBillede(int id)
+        //--------------------------------NyeBegivenheder start--------------------------------//
+
+        public ActionResult KlubaftenRediger()
         {
-
-            GkkGalleriFac galleriFac = new GkkGalleriFac();
-
-            galleriFac.Delete(id);
-
-            return RedirectToAction("GalleriRedigere");
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            return View(RedigerSide.Get(8));
         }
 
-        //--------------------------------Galleri slut--------------------------------//
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult KlubAftenRediger(GkkRediger RedigerForside)
+        {
+            RedigerForside.Overskrift = " ";
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            RedigerSide.Update(RedigerForside);
+            return View(RedigerSide.Get(8));
+        }
+
+        //--------------------------------NyeBegivenheder slut--------------------------------//
+
+        //--------------------------------Begivenheder start--------------------------------//
+
+        public ActionResult BegivenhederRediger()
+        {
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            return View(RedigerSide.Get(9));
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult BegivenhederRediger(GkkRediger RedigerForside)
+        {
+            RedigerForside.Overskrift = " ";
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            RedigerSide.Update(RedigerForside);
+            return View(RedigerSide.Get(9));
+        }
+
+        //--------------------------------Begivenheder slut--------------------------------//
+
+        //--------------------------------Tider og Priser start--------------------------------//
+
+        public ActionResult TiderogPriserRediger()
+        {
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            return View(RedigerSide.Get(7));
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult TiderogPriserRediger(GkkRediger RedigerForside)
+        {
+            RedigerForside.Overskrift = " ";
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            RedigerSide.Update(RedigerForside);
+            return View(RedigerSide.Get(7));
+        }
+
+        //--------------------------------Tider og Priser slut--------------------------------//
+
+        //--------------------------------Logud start--------------------------------//
+
+        public ActionResult Logud()
+        {
+            Session.Remove("UserLogin");
+
+            return Redirect("/Home/Index");
+        }
+
+        //--------------------------------Logud slut--------------------------------//
     }
+
 }
+
+

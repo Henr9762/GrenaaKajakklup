@@ -4,7 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
 }
 
-<h2>KlubaftenRediger</h2>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script type="text/javascript">
     tinymce.init({
@@ -34,14 +33,14 @@
 <div class="row">
     <div class="large-12 columns">
 
-        <form action="/Admin/Admin/KlubAftenRediger/" enctype="mutipart/form-data" method="POST">
+        <form action="/Admin/Admin/KlubAftenRediger" enctype="mutipart/form-data" method="POST">
             <br />
-            <h4>Redigere text på produkter</h4>
+            <h4>Redigere text i Klubaften</h4>
             <br />
             <textarea name="Tekst">@Model.Tekst</textarea>
             <input id="Hidden1" type="hidden" name="ID" value="@Model.ID" />
-            <input type="submit" name="Gemforside" value="Gem" />
             <br />
+            <input class="KnapStyle" type="submit" name="Gemforside" value="Gem" />
         </form>
     </div>
 </div>
