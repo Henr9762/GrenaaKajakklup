@@ -99,10 +99,18 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
 
         public ActionResult SletBruger(int id)
         {
-
+            int BrugerID = int.Parse(Session["Admin"].ToString());
+            
             OpretFac Kf = new OpretFac();
             Gkkbruger K = new Gkkbruger();
-
+            if (BrugerID == id)
+            {
+                
+            }
+            else
+            {
+                Kf.Delete(id);
+            }
             Kf.Delete(id);
 
             return View("Brugerliste", Kf.GetAll());
@@ -203,7 +211,7 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
 
             return View();
         }
-
+        
         [HttpPost]
         public ActionResult GalleriRedigere(HttpPostedFileBase file)
         {
@@ -380,7 +388,6 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
 
         public ActionResult NyeBegivenhederRediger()
         {
-
             GkkRedigerFac RedigerSide = new GkkRedigerFac();
             return View(RedigerSide.Get(10));
 
@@ -407,6 +414,41 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             return RedirectToAction("GalleriRedigere");
         }
 
+
         //--------------------------------Galleri slut--------------------------------//
+
+
+
+        //--------------------------------Kalender start--------------------------------//
+
+        public ActionResult KalenderRediger()
+        {
+            return View();
+        }
+
+        //--------------------------------Kalender slut--------------------------------//
+
+
+
+        //--------------------------------Tilmelding start--------------------------------//
+
+        public ActionResult TilmeldingRediger()
+        {
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            return View(RedigerSide.Get(12));
+        }
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult TilmeldingRediger(GkkRediger RedigerTilmeldning)
+        {
+            RedigerTilmeldning.Overskrift = " ";
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            RedigerSide.Update(RedigerTilmeldning);
+            return View(RedigerSide.Get(12));
+        }
+        //--------------------------------Tilmelding slut--------------------------------//
+
     }
+
+
 }

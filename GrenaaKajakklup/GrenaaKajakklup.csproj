@@ -205,6 +205,8 @@
     <Content Include="Areas\Admin\Views\Admin\NyeBegivenhederRediger.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\VedtægterRedigere.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\GalleriRedigere.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\KalenderRediger.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\TilmeldingRediger.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

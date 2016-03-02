@@ -4,8 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
 }
 
-<h2>BegivenhederRediger</h2>
-<h2>VinterRoning</h2>
+
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script type="text/javascript">
     tinymce.init({
@@ -37,7 +36,7 @@
 
         <form action="/Admin/Admin/BegivenhederRediger/" enctype="mutipart/form-data" method="POST">
             <br />
-            <h4>Redigere text på produkter</h4>
+            <h4>Redigere text på Begivenheder</h4>
             <br />
             <textarea name="Tekst">@Model.Tekst</textarea>
             <input id="Hidden1" type="hidden" name="ID" value="@Model.ID" />

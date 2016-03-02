@@ -89,6 +89,7 @@ namespace GrenaaKajakklup.Controllers
 
 
             return View(NyeBegivenheder.Get(10));
+            
         }
 
 
@@ -113,7 +114,10 @@ namespace GrenaaKajakklup.Controllers
 
         public ActionResult Tilmelding()
         {
-            return View();
+            GkkRedigerFac Tilmelding = new GkkRedigerFac();
+
+            return View(Tilmelding.Get(12));
+
         }
 
         
