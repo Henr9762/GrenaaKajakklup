@@ -117,14 +117,14 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             {
                 if (id != 49)
                 {
-                    Kf.Delete(id);
+            Kf.Delete(id);
                 }
                 else
                 {
                     ViewBag.MSG = "Denne Bruger kan ikke slættes af sikkerheds mæssige grunde";
                 }
             }
-            
+
             return View("Brugerliste", Kf.GetAll());
         }
 
@@ -236,13 +236,13 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             foreach (HttpPostedFileBase fil in file)
             {
                 if (fil.ContentLength > 0 && file != null)
-                {
+            {
                     string appPath = Request.PhysicalApplicationPath;
                     RedigereGalleri.BilledeStor = uploader.UploadImage(fil, appPath + @"Content\Images\", 0, true);
                     RedigereGalleri.BilledeLille = uploader.UploadImage(fil, appPath + @"Content\Images\", 200, true);
 
-                    RedigereGalleriFac.Insert(RedigereGalleri);
-                }
+                RedigereGalleriFac.Insert(RedigereGalleri);
+            }
             }
 
             return RedirectToAction("GalleriRedigere");
@@ -410,6 +410,12 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
             return View(RedigerSide.Get(9));
         }
 
+        public ActionResult NyeBegivenhederRediger()
+        {
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            return View(RedigerSide.Get(10));
+        }
+
         //--------------------------------Begivenheder slut--------------------------------//
 
         //--------------------------------Tider og Priser start--------------------------------//
@@ -442,7 +448,42 @@ namespace GrenaaKajakklup.Areas.Admin.Controllers
         }
 
         //--------------------------------Logud slut--------------------------------//
+
+        //--------------------------------Galleri slut--------------------------------//
+
+
+
+        //--------------------------------Kalender start--------------------------------//
+
+        public ActionResult KalenderRediger()
+        {
+            return View();
+        }
+
+        //--------------------------------Kalender slut--------------------------------//
+
+
+
+        //--------------------------------Tilmelding start--------------------------------//
+
+        public ActionResult TilmeldingRediger()
+        {
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            return View(RedigerSide.Get(12));
+        }
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult TilmeldingRediger(GkkRediger RedigerTilmeldning)
+        {
+            RedigerTilmeldning.Overskrift = " ";
+            GkkRedigerFac RedigerSide = new GkkRedigerFac();
+            RedigerSide.Update(RedigerTilmeldning);
+            return View(RedigerSide.Get(12));
+        }
+        //--------------------------------Tilmelding slut--------------------------------//
+
     }
+
 
 }
 

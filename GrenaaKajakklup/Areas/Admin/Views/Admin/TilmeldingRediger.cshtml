@@ -1,10 +1,8 @@
 ﻿@model RepoGKK.Models.BaseModels.GkkRediger
 @{
-    ViewBag.Title = "ROmedOSRediger";
+    ViewBag.Title = "TilmeldingRediger";
     Layout = "~/Areas/Admin/Views/Shared/MasterCms.cshtml";
 }
-
-
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script type="text/javascript">
@@ -33,16 +31,17 @@
     });
 </script>
 <div class="row">
-<div class="large-12 columns">
+    <div class="large-12 columns">
 
-        <form action="/Admin/Admin/ROmedOSRediger" enctype="mutipart/form-data" method="POST">
+        <form action="/Admin/Admin/TilmeldingRediger/" enctype="mutipart/form-data" method="POST">
             <br />
-            <h4>Redigere text i Ro med os</h4>
+            <h4>Redigere text på Tilmeldning</h4>
             <br />
-        <textarea name="Tekst">@Model.Tekst</textarea>
+            <textarea name="Tekst">@Model.Tekst</textarea>
             <input id="Hidden1" type="hidden" name="ID" value="@Model.ID" />
+            <input type="submit" name="Gemforside" value="Gem" />
             <br />
-            <input class="KnapStyle" type="submit" name="Gemforside" value="Gem" />
-    </form>
-</div>
+        </form>
     </div>
+</div>
+
